@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item - Shopping List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Add New Item</h2>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="itemName">Item Name</label>
+                <input type="text" class="form-control" name="name" id="itemName" placeholder="Enter item name" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" name="quantite" id="quantity" placeholder="Enter quantity (e.g., 2 kg)" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" name="categorie" id="category" required>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Beverages">Beverages</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" name="status" id="status" required>
+                    <option value="Not Purchased">Not Purchased</option>
+                    <option value="Purchased">Purchased</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save Item</button>
+            <a href="shopping_list.html" class="btn btn-secondary btn-block">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

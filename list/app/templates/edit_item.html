@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item - Shopping List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Edit Item</h2>
+        
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="itemName">Item Name</label>
+                <input type="text" class="form-control" id="itemName" name="name" value="{{ itemss.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" id="quantity" name="quantite" value="{{ itemss.quantity }}" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" name="categorie" required>
+                    <option value="Fruits" {% if itemss.category.name == "Fruits" %}selected{% endif %}>Fruits</option>
+                    <option value="Vegetables" {% if itemss.category.name == "Vegetables" %}selected{% endif %}>Vegetables</option>
+                    <option value="Dairy" {% if itemss.category.name == "Dairy" %}selected{% endif %}>Dairy</option>
+                    <option value="Beverages" {% if itemss.category.name == "Beverages" %}selected{% endif %}>Beverages</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Not Purchased" {% if itemss.status == "Not Purchased" %}selected{% endif %}>Not Purchased</option>
+                    <option value="Purchased" {% if itemss.status == "Purchased" %}selected{% endif %}>Purchased</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary btn-block">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
